@@ -9,6 +9,9 @@
 //lighting functions
 color get_lighting( double *normal, double *view, color alight, double light[2][3], double *areflect, double *dreflect, double *sreflect) {
   color i, amb, dif, spe;
+  normalize(normal);
+  normalize(light[LOCATION]);
+  normalize(view);
   amb = calculate_ambient(alight, areflect);
   dif = calculate_diffuse(light, dreflect, normal);
   spe = calculate_specular(light, sreflect, view, normal);
